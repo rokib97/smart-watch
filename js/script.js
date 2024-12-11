@@ -14,9 +14,7 @@ const changeThumbnailColor = (color) => {
   });
 
   // Change the image based on selected color
-  productImage.src = colors.includes(color)
-    ? `${productImageBase}${color}.png`
-    : `${productImageBase}purple.png`;
+  productImage.src = `${productImageBase}${color}.png`;
 };
 
 // Select wrist size
@@ -45,16 +43,21 @@ const addToCart = () => {
     document.getElementById("cart-count").innerText = cartCount;
     document.getElementById("checkout-container").classList.remove("hidden");
 
-    const selectedColor =
-      document
-        .querySelector("button.bg-purple-500.border-purple-600")
-        ?.id.split("-")[0] || "purple";
-    const selectedSize =
-      document
-        .querySelector("button.border-purple-600:not(.w-6)")
-        ?.innerText.split(" ")[0] || "M";
+    const selectedColorButton = document.querySelector(
+      "button.border-purple-600.w-6"
+    );
+    const selectedColor = selectedColorButton
+      ? selectedColorButton.id.split("-")[0]
+      : "purple";
 
-    // Add the item to cart with dynamic image and color
+    const selectedSizeButton = document.querySelector(
+      "button.border-purple-600:not(.w-6)"
+    );
+    const selectedSize = selectedSizeButton
+      ? selectedSizeButton.innerText.split(" ")[0]
+      : "M";
+
+    // Add the item to the cart
     cartItems.push({
       image: `${selectedColor}.png`,
       title: productTitle,
@@ -82,9 +85,7 @@ const openCartModal = () => {
     row.innerHTML = `
       <td class="py-2 px-4">
         <div class="flex items-center space-x-2">
-          <img src="${
-            productImageBase + image
-          }" alt="${title}" class="w-12 h-12 object-cover rounded-md" />
+          <img src="${productImageBase}${image}" alt="${title}" class="w-12 h-12 object-cover rounded-md" />
           <span class="font-semibold">${title}</span>
         </div>
       </td>
