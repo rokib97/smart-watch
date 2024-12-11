@@ -7,7 +7,6 @@ const productTitle = "Classy Modern Smart Watch";
 function changeThumbnailColor(color) {
   const productImage = document.getElementById("product-image");
   const colors = ["purple", "teal", "cyan", "gray"];
-  // Reset borders of all color buttons
   colors.forEach((c) => {
     const button = document.getElementById(`${c}-color`);
     if (color === c) {
@@ -53,21 +52,21 @@ function addToCart() {
     cartCount += quantity;
     document.getElementById("cart-count").innerText = cartCount;
     document.getElementById("checkout-container").classList.remove("hidden");
-
-    // Get selected color from the button with border
     const selectedColor =
-      document.querySelector("button.border-purple-600")?.id.split("-")[0] ||
-      "purple"; // Get color from the button id, default to "purple"
-
-    const size =
-      document.querySelector("button.border-purple-600")?.innerText[0] || "M";
+      document
+        .querySelector("button.bg-purple-500.border-purple-600")
+        ?.id.split("-")[0] || "purple";
+    const selectedSize =
+      document
+        .querySelector("button.border-purple-600:not(.w-6)")
+        ?.innerText.split(" ")[0] || "M";
 
     // Add the item to cart with dynamic image and color
     cartItems.push({
       image: `${selectedColor}.png`,
       title: productTitle,
       color: selectedColor,
-      size,
+      size: selectedSize,
       quantity,
       price: 79,
     });
@@ -78,7 +77,6 @@ function addToCart() {
 function openCartModal() {
   const cartModal = document.getElementById("cart-modal");
   const cartItemsContainer = document.getElementById("cart-items");
-  const cartTotal = document.getElementById("cart-total");
 
   cartItemsContainer.innerHTML = ""; // Clear previous cart items
 
@@ -87,7 +85,8 @@ function openCartModal() {
   cartItems.forEach((item) => {
     const row = document.createElement("tr");
     row.classList.add("border-b");
-    row.innerHTML = `<td class="py-2 px-4">
+    row.innerHTML = `
+        <td class="py-2 px-4">
           <div class="flex items-center space-x-2">
             <img src="${productImageBase + item.image}" alt="${
       item.title
@@ -98,24 +97,21 @@ function openCartModal() {
         <td class="py-2 px-4">${item.color}</td>
         <td class="py-2 px-4">${item.size}</td>
         <td class="py-2 px-4">${item.quantity}</td>
-        <td class="py-2 px-4">$${(item.price * item.quantity).toFixed(2)}</td>`;
+        <td class="py-2 px-4">$${(item.price * item.quantity).toFixed(2)}</td>
+      `;
     cartItemsContainer.appendChild(row);
+
     totalPrice += item.price * item.quantity;
     totalQuantity += item.quantity;
   });
-
-  // Update the Total
-  cartTotal.innerHTML = `
-      <tr class="border-t">
-        <td class="py-2 px-4"></td> <!-- Empty cell for Item column -->
-        <td class="py-2 px-4"></td> <!-- Empty cell for Color column -->
-        <td class="py-2 px-4"></td> <!-- Empty cell for Size column -->
-        <td class="py-2 px-4">${totalQuantity}</td> <!-- Total Quantity directly below Quantity column -->
-        <td class="py-2 px-4">$${totalPrice.toFixed(
-          2
-        )}</td> <!-- Total Price directly below Price column -->
-      </tr>
+  const totalRow = document.createElement("tr");
+  totalRow.classList.add("border-t", "font-bold");
+  totalRow.innerHTML = `
+      <td class="py-2 px-4" colspan="3">Total</td> 
+      <td class="py-2 px-4">${totalQuantity}</td>
+      <td class="py-2 px-4">$${totalPrice.toFixed(2)}</td>
     `;
+  cartItemsContainer.appendChild(totalRow);
 
   cartModal.classList.remove("hidden");
 }
