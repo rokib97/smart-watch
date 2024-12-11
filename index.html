@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smartwatch Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="text-gray-800">
+    <div class="container mx-auto py-12 px-4">
+      <div class="max-w-4xl mx-auto overflow-hidden">
+        <!-- Product Section -->
+        <div class="flex flex-col md:flex-row items-stretch gap-6">
+          <!-- Image Section -->
+          <div class="flex justify-center items-center md:w-1/2">
+            <img
+              src="./images/01.png"
+              alt="Smartwatch"
+              class="h-full md:h-auto object-cover rounded-lg"
+            />
+          </div>
+
+          <!-- Product Details -->
+          <div
+            class="p-6 md:p-8 md:w-1/2 flex flex-col justify-between"
+            style="max-height: 85%"
+          >
+            <h1 class="text-2xl font-bold text-gray-800">
+              Classy Modern Smart Watch
+            </h1>
+            <div class="flex items-center mt-2">
+              <div class="text-yellow-400">★★★★☆</div>
+              <span class="ml-2 text-sm text-gray-600">(2 Reviews)</span>
+            </div>
+            <div class="mt-4">
+              <span class="text-gray-400 line-through text-lg">$99.00</span>
+              <span class="text-purple-600 text-2xl font-bold">$79.00</span>
+            </div>
+            <p class="mt-4 text-gray-600 text-sm">
+              I must explain to you how all this mistaken idea of denouncing
+              pleasure and praising pain was born and I will give you a complete
+              account of the system, and expound the actual teaching.
+            </p>
+
+            <!-- Type & Model -->
+            <div class="mt-6">
+              <div class="flex items-center text-gray-700 text-sm">
+                <span class="font-semibold w-24">Type:</span>
+                <span>Watch</span>
+              </div>
+              <div class="flex items-center text-gray-700 text-sm mt-1">
+                <span class="font-semibold w-24">Model:</span>
+                <span>Forerunner 290XT</span>
+              </div>
+            </div>
+
+            <!-- Band Color -->
+            <div class="mt-4">
+              <span class="text-sm font-semibold text-gray-700"
+                >Band Color</span
+              >
+              <div class="flex items-center mt-1 space-x-2">
+                <button
+                  class="w-6 h-6 rounded-full bg-purple-500 border-2 border-purple-600"
+                ></button>
+                <button
+                  class="w-6 h-6 rounded-full bg-teal-500 border-2 border-gray-300"
+                ></button>
+                <button
+                  class="w-6 h-6 rounded-full bg-cyan-500 border-2 border-gray-300"
+                ></button>
+                <button
+                  class="w-6 h-6 rounded-full bg-gray-700 border-2 border-gray-300"
+                ></button>
+              </div>
+            </div>
+
+            <div class="mt-2">
+              <span class="text-sm font-semibold text-gray-700"
+                >Wrist Size</span
+              >
+              <div class="grid grid-cols-4 gap-2 mt-2">
+                <button
+                  class="px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-100"
+                >
+                  S $69
+                </button>
+                <button
+                  class="px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-100"
+                >
+                  M $79
+                </button>
+                <button
+                  class="px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-100"
+                >
+                  L $89
+                </button>
+                <button
+                  class="px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-100"
+                >
+                  XL $99
+                </button>
+              </div>
+            </div>
+
+            <!-- Quantity & Add to Cart -->
+            <div class="mt-6 flex flex-wrap items-center space-x-4">
+              <div class="flex items-center border border-gray-300 rounded-lg">
+                <button class="px-4 py-2 text-gray-600 hover:text-gray-800">
+                  -
+                </button>
+                <span class="px-4">0</span>
+                <button class="px-4 py-2 text-gray-600 hover:text-gray-800">
+                  +
+                </button>
+              </div>
+              <div class="flex items-center space-x-2">
+                <button
+                  class="px-6 py-3 bg-purple-600 text-white rounded-lg shadow-lg hover:bg-purple-700"
+                >
+                  Add to Cart
+                </button>
+
+                <button class="text-purple-600 hover:text-purple-700 text-2xl">
+                  <i class="fas fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkout Button -->
+        <div class="flex justify-center mt-8">
+          <button
+            class="px-6 py-3 bg-orange-500 text-white rounded-lg shadow-lg hover:bg-orange-600 flex items-center"
+          >
+            Checkout
+            <span
+              class="ml-2 bg-white text-orange-500 rounded-lg w-6 h-6 flex items-center justify-center text-xs font-bold"
+            >
+              2
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
