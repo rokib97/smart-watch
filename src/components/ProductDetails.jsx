@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import { FaHeart } from "react-icons/fa"; // Import FontAwesome Heart icon
+
 const ProductDetails = ({
   color,
   setColor,
@@ -78,16 +80,22 @@ const ProductDetails = ({
             +
           </button>
         </div>
-        <button
-          className="px-6 py-3 bg-purple-600 text-white rounded-lg shadow-lg hover:bg-purple-700"
-          onClick={addToCart}
-        >
-          Add to Cart
-        </button>
+        <div className="flex items-center space-x-2">
+          <button
+            className="px-6 py-3 bg-purple-600 text-white rounded-lg shadow-lg hover:bg-purple-700"
+            onClick={addToCart}
+          >
+            Add to Cart
+          </button>
+          <button className="text-gray-600 hover:text-red-600">
+            <FaHeart className="text-purple-500" size={28} />
+          </button>
+        </div>
       </div>
     </div>
   );
 };
+
 ProductDetails.propTypes = {
   color: PropTypes.string.isRequired,
   setColor: PropTypes.func.isRequired,

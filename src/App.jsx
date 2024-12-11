@@ -59,10 +59,10 @@ const App = () => {
             addToCart={addToCart}
           />
         </div>
-        <div className="mt-4 flex justify-center relative">
+        <div className="mt-16 flex justify-center relative">
           {cartItems.length > 0 && (
             <button
-              className="px-6 py-3 rounded-lg shadow-lg bg-yellow-400 text-black font-semibold hover:bg-yellow-500 flex items-center gap-2"
+              className="px-6 py-2 rounded-lg shadow-lg bg-yellow-400 text-black font-semibold hover:bg-yellow-500 flex items-center gap-2"
               onClick={openModal}
             >
               Checkout
