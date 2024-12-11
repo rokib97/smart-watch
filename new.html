@@ -238,6 +238,7 @@
             break;
         }
       }
+
       // Update the quantity
       function updateQuantity(amount) {
         const quantityElement = document.getElementById("quantity");
@@ -264,7 +265,7 @@
             .classList.contains("bg-purple-500")
             ? "Purple"
             : "Other";
-          const size = "M";
+          const size = "M"; // You can get this dynamically based on user selection
 
           cartItems.push({ color: selectedColor, size, quantity, price: 79 });
         }
@@ -296,15 +297,18 @@
 
         cartModal.classList.remove("hidden");
       }
+
       // Close cart modal
       function closeCartModal() {
         const cartModal = document.getElementById("cart-modal");
         cartModal.classList.add("hidden");
       }
+
       // Continue shopping (just close the modal)
       function continueShopping() {
         closeCartModal();
       }
+
       // Proceed to checkout (you can define the checkout action here)
       function checkout() {
         alert("Proceeding to checkout...");
