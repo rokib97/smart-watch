@@ -10,7 +10,6 @@ This is the React version of a Smart Watch Store built using React, Tailwind CSS
 
 - **React** (Functional Components & Hooks)
 - **Tailwind CSS** for styling
-- **React Router** for navigation (if applicable)
 - **FontAwesome** for icons (Heart icon next to "Add to Cart" button)
 
 ## Features
