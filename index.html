@@ -16,7 +16,6 @@
   <body class="text-gray-800">
     <div class="container mx-auto py-12 px-4">
       <div class="max-w-4xl mx-auto overflow-hidden">
-        <!-- Product Section -->
         <div class="flex flex-col md:flex-row items-stretch gap-6">
           <!-- Image Section -->
           <div class="flex justify-center items-center md:w-1/2">
@@ -198,6 +197,11 @@
           <span id="cart-total" class="text-xl font-bold">$0.00</span>
         </div>
 
+        <div class="flex justify-between mt-2 border-t pt-2">
+          <span class="font-bold">Total Quantity:</span>
+          <span id="cart-total-quantity" class="text-xl font-bold">0</span>
+        </div>
+
         <!-- Buttons -->
         <div class="flex justify-between mt-4">
           <button
@@ -216,99 +220,6 @@
       </div>
     </div>
 
-    <script>
-      let cartCount = 0;
-      let cartItems = [];
-
-      // Change the main image based on color
-      function changeThumbnailColor(color) {
-        const productImage = document.getElementById("product-image");
-        switch (color) {
-          case "purple":
-            productImage.src = "./images/purple.png";
-            break;
-          case "teal":
-            productImage.src = "./images/teal.png";
-            break;
-          case "cyan":
-            productImage.src = "./images/cyan.png";
-            break;
-          case "gray":
-            productImage.src = "./images/gray.png";
-            break;
-        }
-      }
-      // Update the quantity
-      function updateQuantity(amount) {
-        const quantityElement = document.getElementById("quantity");
-        let quantity = parseInt(quantityElement.innerText);
-        quantity = Math.max(0, quantity + amount);
-        quantityElement.innerText = quantity;
-      }
-
-      // Add item to cart
-      function addToCart() {
-        const quantity = parseInt(
-          document.getElementById("quantity").innerText
-        );
-        if (quantity > 0) {
-          cartCount += quantity;
-          document.getElementById("cart-count").innerText = cartCount;
-          document
-            .getElementById("checkout-container")
-            .classList.remove("hidden");
-
-          // Add item to cart array
-          const selectedColor = document
-            .querySelector("button.bg-purple-500")
-            .classList.contains("bg-purple-500")
-            ? "Purple"
-            : "Other";
-          const size = "M";
-
-          cartItems.push({ color: selectedColor, size, quantity, price: 79 });
-        }
-      }
-
-      // Open cart modal
-      function openCartModal() {
-        const cartModal = document.getElementById("cart-modal");
-        const cartItemsContainer = document.getElementById("cart-items");
-        const cartTotal = document.getElementById("cart-total");
-
-        cartItemsContainer.innerHTML = ""; // Clear previous cart items
-
-        let total = 0;
-        cartItems.forEach((item) => {
-          const row = document.createElement("tr");
-          row.classList.add("border-b");
-          row.innerHTML = `
-            <td class="py-2 px-4">${item.color} ${item.size}</td>
-            <td class="py-2 px-4">${item.size}</td>
-            <td class="py-2 px-4">${item.quantity}</td>
-            <td class="py-2 px-4">$${item.price * item.quantity}</td>
-          `;
-          cartItemsContainer.appendChild(row);
-          total += item.price * item.quantity;
-        });
-
-        cartTotal.innerText = `$${total.toFixed(2)}`;
-
-        cartModal.classList.remove("hidden");
-      }
-      // Close cart modal
-      function closeCartModal() {
-        const cartModal = document.getElementById("cart-modal");
-        cartModal.classList.add("hidden");
-      }
-      // Continue shopping (just close the modal)
-      function continueShopping() {
-        closeCartModal();
-      }
-      // Proceed to checkout (you can define the checkout action here)
-      function checkout() {
-        alert("Proceeding to checkout...");
-      }
-    </script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
