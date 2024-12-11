@@ -48,7 +48,6 @@ This repository is organized into two branches:
 
 - React (Functional components and hooks)
 - Tailwind CSS
-- React Router for navigation (if applicable)
 
 **Features**:
 
