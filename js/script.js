@@ -1,13 +1,13 @@
 let cartCount = 0;
 let cartItems = [];
-const productImageBase = "./images/"; // Path to your product images
-const productTitle = "Classy Modern Smart Watch"; // The product title
+const productImageBase = "./images/";
+const productTitle = "Classy Modern Smart Watch";
 
 // Change the main image based on color
 function changeThumbnailColor(color) {
   const productImage = document.getElementById("product-image");
   const colors = ["purple", "teal", "cyan", "gray"];
-
+  // Reset borders of all color buttons
   colors.forEach((c) => {
     const button = document.getElementById(`${c}-color`);
     if (color === c) {
@@ -17,26 +17,17 @@ function changeThumbnailColor(color) {
     }
   });
 
-  switch (color) {
-    case "purple":
-      productImage.src = productImageBase + "purple.png";
-      break;
-    case "teal":
-      productImage.src = productImageBase + "teal.png";
-      break;
-    case "cyan":
-      productImage.src = productImageBase + "cyan.png";
-      break;
-    case "gray":
-      productImage.src = productImageBase + "gray.png";
-      break;
+  // Change the image based on selected color
+  if (colors.includes(color)) {
+    productImage.src = productImageBase + color + ".png";
+  } else {
+    productImage.src = productImageBase + "purple.png";
   }
 }
 
 // Select wrist size
 function selectWristSize(size) {
   const sizes = ["S", "M", "L", "XL"];
-
   sizes.forEach((s) => {
     const button = document.getElementById(`size-${s}`);
     if (size === s) {
@@ -63,16 +54,17 @@ function addToCart() {
     document.getElementById("cart-count").innerText = cartCount;
     document.getElementById("checkout-container").classList.remove("hidden");
 
-    // Get selected color
+    // Get selected color from the button with border
     const selectedColor =
-      document.querySelector("button.border-purple-600")?.style
-        .backgroundColor || "Other";
+      document.querySelector("button.border-purple-600")?.id.split("-")[0] ||
+      "purple"; // Get color from the button id, default to "purple"
 
     const size =
-      document.querySelector("button.border-purple-600")?.innerText[0] || "M"; // Get selected size
+      document.querySelector("button.border-purple-600")?.innerText[0] || "M";
 
+    // Add the item to cart with dynamic image and color
     cartItems.push({
-      image: "purple.png",
+      image: `${selectedColor}.png`,
       title: productTitle,
       color: selectedColor,
       size,
@@ -87,7 +79,6 @@ function openCartModal() {
   const cartModal = document.getElementById("cart-modal");
   const cartItemsContainer = document.getElementById("cart-items");
   const cartTotal = document.getElementById("cart-total");
-  const cartTotalQuantity = document.getElementById("cart-total-quantity");
 
   cartItemsContainer.innerHTML = ""; // Clear previous cart items
 
@@ -97,28 +88,34 @@ function openCartModal() {
     const row = document.createElement("tr");
     row.classList.add("border-b");
     row.innerHTML = `<td class="py-2 px-4">
-        <div class="flex items-center space-x-2">
-          <img src="${productImageBase + item.image}" alt="${
+          <div class="flex items-center space-x-2">
+            <img src="${productImageBase + item.image}" alt="${
       item.title
     }" class="w-12 h-12 object-cover rounded-md" />
-          <span class="font-semibold">${item.title}</span>
-        </div>
-      </td>
-      <td class="py-2 px-4">
-        <div class="w-6 h-6 rounded-full" style="background-color:${
-          item.color
-        }"></div>
-      </td>
-      <td class="py-2 px-4">${item.size}</td>
-      <td class="py-2 px-4">${item.quantity}</td>
-      <td class="py-2 px-4">$${(item.price * item.quantity).toFixed(2)}</td>`;
+            <span class="font-semibold">${item.title}</span>
+          </div>
+        </td>
+        <td class="py-2 px-4">${item.color}</td>
+        <td class="py-2 px-4">${item.size}</td>
+        <td class="py-2 px-4">${item.quantity}</td>
+        <td class="py-2 px-4">$${(item.price * item.quantity).toFixed(2)}</td>`;
     cartItemsContainer.appendChild(row);
     totalPrice += item.price * item.quantity;
     totalQuantity += item.quantity;
   });
 
-  cartTotal.innerText = `$${totalPrice.toFixed(2)}`;
-  cartTotalQuantity.innerText = totalQuantity;
+  // Update the Total
+  cartTotal.innerHTML = `
+      <tr class="border-t">
+        <td class="py-2 px-4"></td> <!-- Empty cell for Item column -->
+        <td class="py-2 px-4"></td> <!-- Empty cell for Color column -->
+        <td class="py-2 px-4"></td> <!-- Empty cell for Size column -->
+        <td class="py-2 px-4">${totalQuantity}</td> <!-- Total Quantity directly below Quantity column -->
+        <td class="py-2 px-4">$${totalPrice.toFixed(
+          2
+        )}</td> <!-- Total Price directly below Price column -->
+      </tr>
+    `;
 
   cartModal.classList.remove("hidden");
 }
@@ -134,7 +131,7 @@ function continueShopping() {
   closeCartModal();
 }
 
-// Proceed to checkout (you can define the checkout action here)
+// Proceed to checkout
 function checkout() {
   alert("Proceeding to checkout...");
 }

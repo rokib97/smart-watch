@@ -160,7 +160,10 @@
         </div>
 
         <!-- Checkout Button (Initially Hidden) -->
-        <div id="checkout-container" class="fixed bottom-8 right-8 hidden">
+        <div
+          id="checkout-container"
+          class="fixed bottom-8 right-8 border-2 border-red-500 hidden"
+        >
           <button
             id="checkout-btn"
             class="px-6 py-3 bg-orange-500 text-white rounded-lg shadow-lg hover:bg-orange-600 flex items-center"
@@ -205,11 +208,6 @@
         </div>
 
         <!-- Total Section -->
-
-        <div class="flex justify-between mt-2 border-t pt-2">
-          <span class="font-bold">Total Quantity:</span>
-          <span id="cart-total-quantity" class="text-xl font-bold">0</span>
-        </div>
         <div class="flex justify-between mt-4 border-t pt-4">
           <span class="font-bold">Total:</span>
           <span id="cart-total" class="text-xl font-bold">$0.00</span>
