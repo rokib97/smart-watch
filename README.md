@@ -28,7 +28,28 @@ To run the React version of the project locally, follow these steps:
 
 ### 1. Clone the repository
 
-````bash
-git clone https://github.com/your-username/smart-watch.git
 ```bash
-````
+git clone https://github.com/your-username/smart-watch.git
+```
+
+### 2. Switch to the react-version branch
+
+```bash
+git checkout react-version
+```
+
+### 3.Install Dependencies
+
+```bash
+cd smart-watch
+npm install
+
+```
+
+### 4. Run the React Application
+
+```bash
+npm start
+```
+
+This will open the app in your default browser at http://localhost:5173
