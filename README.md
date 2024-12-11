@@ -12,7 +12,7 @@ Both versions ensure cross-browser compatibility, responsiveness, and adherence 
 ### Live Previews
 
 - **HTML Version**: [https://rokib97.github.io/smart-watch/](#)
-- **React Version**: [Live Preview React Version](#)
+- **React Version**: [https://smart-watch-react.vercel.app/](#)
 
 ## Repository Branches
 
