@@ -6,6 +6,17 @@ const productTitle = "Classy Modern Smart Watch"; // The product title
 // Change the main image based on color
 function changeThumbnailColor(color) {
   const productImage = document.getElementById("product-image");
+  const colors = ["purple", "teal", "cyan", "gray"];
+
+  colors.forEach((c) => {
+    const button = document.getElementById(`${c}-color`);
+    if (color === c) {
+      button.classList.add("border-purple-600");
+    } else {
+      button.classList.remove("border-purple-600");
+    }
+  });
+
   switch (color) {
     case "purple":
       productImage.src = productImageBase + "purple.png";
@@ -20,6 +31,20 @@ function changeThumbnailColor(color) {
       productImage.src = productImageBase + "gray.png";
       break;
   }
+}
+
+// Select wrist size
+function selectWristSize(size) {
+  const sizes = ["S", "M", "L", "XL"];
+
+  sizes.forEach((s) => {
+    const button = document.getElementById(`size-${s}`);
+    if (size === s) {
+      button.classList.add("border-purple-600");
+    } else {
+      button.classList.remove("border-purple-600");
+    }
+  });
 }
 
 // Update the quantity
@@ -38,13 +63,13 @@ function addToCart() {
     document.getElementById("cart-count").innerText = cartCount;
     document.getElementById("checkout-container").classList.remove("hidden");
 
-    // Add item to cart array
-    const selectedColor = document
-      .querySelector("button.bg-purple-500")
-      .classList.contains("bg-purple-500")
-      ? "Purple"
-      : "Other";
-    const size = "M"; // You can get this dynamically based on user selection
+    // Get selected color
+    const selectedColor =
+      document.querySelector("button.border-purple-600")?.style
+        .backgroundColor || "Other";
+
+    const size =
+      document.querySelector("button.border-purple-600")?.innerText[0] || "M"; // Get selected size
 
     cartItems.push({
       image: "purple.png",
@@ -71,21 +96,22 @@ function openCartModal() {
   cartItems.forEach((item) => {
     const row = document.createElement("tr");
     row.classList.add("border-b");
-    row.innerHTML = `
-            <td class="py-2 px-4">
-              <div class="flex items-center space-x-2">
-                <img src="${productImageBase + item.image}" alt="${
+    row.innerHTML = `<td class="py-2 px-4">
+        <div class="flex items-center space-x-2">
+          <img src="${productImageBase + item.image}" alt="${
       item.title
     }" class="w-12 h-12 object-cover rounded-md" />
-                <span class="font-semibold">${item.title}</span>
-              </div>
-            </td>
-            <td class="py-2 px-4">${item.size}</td>
-            <td class="py-2 px-4">${item.quantity}</td>
-            <td class="py-2 px-4">$${(item.price * item.quantity).toFixed(
-              2
-            )}</td>
-          `;
+          <span class="font-semibold">${item.title}</span>
+        </div>
+      </td>
+      <td class="py-2 px-4">
+        <div class="w-6 h-6 rounded-full" style="background-color:${
+          item.color
+        }"></div>
+      </td>
+      <td class="py-2 px-4">${item.size}</td>
+      <td class="py-2 px-4">${item.quantity}</td>
+      <td class="py-2 px-4">$${(item.price * item.quantity).toFixed(2)}</td>`;
     cartItemsContainer.appendChild(row);
     totalPrice += item.price * item.quantity;
     totalQuantity += item.quantity;

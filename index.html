@@ -70,18 +70,22 @@
                 <button
                   class="w-6 h-6 rounded-full bg-purple-500 border-2 border-purple-600"
                   onclick="changeThumbnailColor('purple')"
+                  id="purple-color"
                 ></button>
                 <button
                   class="w-6 h-6 rounded-full bg-teal-500 border-2 border-gray-300"
                   onclick="changeThumbnailColor('teal')"
+                  id="teal-color"
                 ></button>
                 <button
                   class="w-6 h-6 rounded-full bg-cyan-500 border-2 border-gray-300"
                   onclick="changeThumbnailColor('cyan')"
+                  id="cyan-color"
                 ></button>
                 <button
                   class="w-6 h-6 rounded-full bg-gray-700 border-2 border-gray-300"
                   onclick="changeThumbnailColor('gray')"
+                  id="gray-color"
                 ></button>
               </div>
             </div>
@@ -93,21 +97,29 @@
               <div class="grid grid-cols-4 gap-2 mt-2">
                 <button
                   class="px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-100"
+                  onclick="selectWristSize('S')"
+                  id="size-S"
                 >
                   S $69
                 </button>
                 <button
                   class="px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-100"
+                  onclick="selectWristSize('M')"
+                  id="size-M"
                 >
                   M $79
                 </button>
                 <button
                   class="px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-100"
+                  onclick="selectWristSize('L')"
+                  id="size-L"
                 >
                   L $89
                 </button>
                 <button
                   class="px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-100"
+                  onclick="selectWristSize('XL')"
+                  id="size-XL"
                 >
                   XL $99
                 </button>
@@ -171,7 +183,7 @@
       id="cart-modal"
       class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center z-50 hidden"
     >
-      <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+      <div class="bg-white p-6 rounded-lg shadow-lg w-96 md:w-2/3 lg:w-1/2">
         <h2 class="text-xl font-bold text-gray-800">Your Cart</h2>
 
         <!-- Cart Items Table -->
@@ -180,6 +192,7 @@
             <thead>
               <tr class="text-left border-b">
                 <th class="py-2 px-4">Item</th>
+                <th class="py-2 px-4">Color</th>
                 <th class="py-2 px-4">Size</th>
                 <th class="py-2 px-4">Quantity</th>
                 <th class="py-2 px-4">Price</th>
@@ -192,14 +205,14 @@
         </div>
 
         <!-- Total Section -->
-        <div class="flex justify-between mt-4 border-t pt-4">
-          <span class="font-bold">Total:</span>
-          <span id="cart-total" class="text-xl font-bold">$0.00</span>
-        </div>
 
         <div class="flex justify-between mt-2 border-t pt-2">
           <span class="font-bold">Total Quantity:</span>
           <span id="cart-total-quantity" class="text-xl font-bold">0</span>
+        </div>
+        <div class="flex justify-between mt-4 border-t pt-4">
+          <span class="font-bold">Total:</span>
+          <span id="cart-total" class="text-xl font-bold">$0.00</span>
         </div>
 
         <!-- Buttons -->
